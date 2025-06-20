@@ -27,7 +27,7 @@ jobs:
        with:
          images: roger375/simple-app
          flavor: |
-           latest=false
+           latest=true
          tags: |
            type=raw,value=01
 
