@@ -19,4 +19,4 @@ jobs:
         script: |
           docker pull roger375/simple-app:latest
           docker stop simple-app || true && docker rm simple-app || true
-          docker run -d -p 8080:80 --name simple-app roger375/simple-app:01
+          docker run -d -p 8080:80 --name simple-app roger375/simple-app:latest
