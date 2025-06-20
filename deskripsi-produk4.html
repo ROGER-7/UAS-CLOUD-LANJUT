@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Description - RogerStore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="gambar/logo2.jpg" alt="store-roger">
+            <h2>Roger Store</h2>
+           </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="product-description" class="product-description-section">
+        <h2>Product Description</h2>
+        <div class="product-details">
+            <img id="product-image" src="gambar/iphone12.jpg" alt="Product Image">
+            <div class="product-info">
+                <h3 id="product-name">iPhone 12</h3>
+                <p id="product-price">$542.438</p>
+                <p id="product-description-text">The iPhone 12 features a 6.1-inch Super Retina XDR display, an A14 Bionic chip, and 5G connectivity. Capture stunning photos and videos with the dual-camera system and enjoy the new ceramic shield front cover for enhanced durability.</p>
+                <button id="buy-button" onclick="addToCart('iPhone 12', 542.438)">Buy</button>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 MyShop. All rights reserved.</p>
+        <p>Follow us on:</p>
+        <div class="social-media">
+            <a href="#"><img src="gambar/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="gambar/twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="gambar/instagram.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+</body>
+</html>

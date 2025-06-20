@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Roger Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="gambar/logo2.jpg" alt="store-roger">
+            <h2>Roger Store</h2>
+           </div>
+        <nav>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero-section">
+        <video class="hero-video" autoplay muted loop>
+            <source src="gambar/videoplayback.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Welcome to RogerStore</h1>
+            <p>Your one-stop shop for all things amazing!</p>
+            <button onclick="location.href='products.html'">Shop Now</button>
+        </div>
+    </section>
+
+    <section class="promo-section">
+        <h2>Special Offers</h2>
+        <div class="promo-banner">
+            <img src="gambar/logo4.jpeg" alt="Special Offer">
+            <div class="promo-text">
+                <h3>Get 50% Off on Selected Items!</h3>
+                <p>Don't miss out on these amazing deals. Limited time only.</p>
+                <button onclick="location.href='products.html'">Shop Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <h2>Popular Products</h2>
+        <div class="product-gallery">
+            <div class="product-card">
+                <a href="deskripsi-produk5.html">
+                    <img src="gambar/iphone13.jpg" alt="Product 5">
+                    <h3>iPhone 13</h3>
+                </a>
+                <p>$836.938</p>
+                <button onclick="addToCart('iPhone 13', 836.938)">Buy</button>
+            </div>
+            <div class="product-card">
+                <a href="deskripsi-produk6.html">
+                    <img src="gambar/iphone14.jpg" alt="Product 6">
+                    <h3>iPhone 14</h3>
+                </a>
+                <p>$991.928</p>
+                <button onclick="addToCart('iPhone 14', 991.928)">Buy</button>
+            </div>
+            <div class="product-card">
+                <a href="deskripsi-produk7.html">
+                    <img src="gambar/iphone15.jpg" alt="Product 7">
+                    <h3>iPhone 15</h3>
+                </a>
+                <p>$1.441,438</p>
+                <button onclick="addToCart('iPhome 15', 1.441,438)">Buy</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"I love shopping at MyShop! They always have the best products."</p>
+                <p>- John</p>
+            </div>
+            <div class="testimonial">
+                <p>"Great prices and fast shipping. Highly recommend!"</p>
+                <p>- Bryan</p>
+            </div>
+            <div class="testimonial">
+                <p>"Excellent customer service and top-quality items."</p>
+                <p>- Yessica</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 RogerStore. All rights reserved.</p>
+        <p>Follow us on:</p>
+        <div class="social-media">
+            <a href="#"><img src="gambar/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="gambar/twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="gambar/instagram.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script src="buy.js"></script>
+</body>
+</html>

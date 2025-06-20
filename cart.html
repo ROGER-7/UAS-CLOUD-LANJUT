@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Roger Store</title>
+    <link rel="stylesheet" href="stylecart.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="gambar/logo2.jpg" alt="store-roger">
+            <h2>Roger Store</h2>
+           </div>
+        <nav>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="cart" class="cart-section">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <p id="empty-cart-message">Your cart is currently empty.</p>
+        
+        <div id="payment-method" class="payment-method">
+            <h3>Choose Payment Method</h3>
+            <form id="payment-form">
+                <div>
+                    <input type="radio" id="credit-card" name="payment" value="credit-card" required>
+                    <label for="credit-card">Credit Card</label>
+                </div>
+                <div>
+                    <input type="radio" id="paypal" name="payment" value="paypal">
+                    <label for="paypal">PayPal</label>
+                </div>
+                <div>
+                    <input type="radio" id="bank-transfer" name="payment" value="bank-transfer">
+                    <label for="bank-transfer">Bank Transfer</label>
+                </div>
+                <button id="checkout-btn" onclick="checkout()">Checkout</button>
+
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 RogerStore. All rights reserved.</p>
+        <p>Follow us on:</p>
+        <div class="social-media">
+            <a href="#"><img src="gambar/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="gambar/twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="gambar/instagram.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+</body>
+</html>
