@@ -10,15 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy to AWS with SSH
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: ${{ secrets.AWS_HOST }}
-        username: ${{ secrets.AWS_USER }}
-        key: ${{ secrets.AWS_KEY }}
-        script: |
-         script: |
+      - name: Deploy to AWS with SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USER }}
+          key: ${{ secrets.AWS_KEY }}
+          script: |
             docker pull roger375/simple-app:01
-            docker stop simple-app || true && docker rm simple-app || true
+            docker stop simple-app || true
+            docker rm simple-app || true
             docker run -d -p 8080:80 --name simple-app roger375/simple-app:01
-
