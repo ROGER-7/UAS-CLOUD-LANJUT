@@ -10,7 +10,13 @@ function addToCart(productName, productPrice) {
 
     localStorage.setItem('cart', JSON.stringify(cart));
     
-    window.location.href = 'cart.html';
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: `${productName} berhasil ditambahkan ke keranjang.`,
+        timer: 1500,
+        showConfirmButton: false
+    });
 }
 
 function updateCart() {
