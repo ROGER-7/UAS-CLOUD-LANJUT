@@ -8,6 +8,19 @@ function addToCart(productName, productPrice) {
     window.location.href = 'cart.html';
 }
 
+function updateCartCount() {
+    // Update the cart count displayed on the page
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let count = cart.length;
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+        cartCountElement.textContent = count;
+    }
+}
+// Update the cart count when the page loads
+document.addEventListener('DOMContentLoaded', function () { 
+    updateCartCount();
+});
 document.addEventListener('DOMContentLoaded', function() {
     let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     let cartContainer = document.getElementById('cart-items');

@@ -19,6 +19,18 @@ function addToCart(productName, productPrice) {
     });
 }
 
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+        cartCountElement.textContent = count;
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartCount();
+});
+
 function updateCart() {
     let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     let cartContainer = document.getElementById('cart-items');
