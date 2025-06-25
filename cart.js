@@ -1,8 +1,7 @@
 function addToCart(productName, productPrice) {
-    // Store cart items in local storage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let existingProduct = cart.find(item => item.name === productName);
-    
+
     if (existingProduct) {
         existingProduct.quantity += 1;
     } else {
@@ -10,8 +9,6 @@ function addToCart(productName, productPrice) {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
-    
-    // Redirect to cart page
     window.location.href = 'cart.html';
 }
 
@@ -19,9 +16,9 @@ function updateCart() {
     let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     let cartContainer = document.getElementById('cart-items');
     let emptyCartMessage = document.getElementById('empty-cart-message');
-    
+
     cartContainer.innerHTML = '';
-    
+
     if (cartItems.length > 0) {
         emptyCartMessage.style.display = 'none';
         cartItems.forEach((item, index) => {
@@ -65,40 +62,123 @@ function removeFromCart(index) {
     updateCart();
 }
 
-function checkout() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-
-    Swal.fire({
-        icon: 'success',
-        title: 'Checkout Sukses!',
-        text: `Jumlah total: $${totalPrice.toFixed(2)}`,
-        timer: 2000,
-        showConfirmButton: false
-    }).then(() => {
-        localStorage.removeItem('cart');
-        updateCart();
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     updateCart();
-});
 
-document.getElementById('contact-form')?.addEventListener('submit', function(event) {
-    event.preventDefault();
-    Swal.fire({
-        icon: 'success',
-        title: 'Terima Kasih!',
-        text: 'Pesan Anda berhasil dikirim!',
-        timer: 2000,
-        showConfirmButton: false
-    }).then(() => {
-        // Redirect to the home page after showing the success message
+    // Handle contact form (optional)
+    document.getElementById('contact-form')?.addEventListener('submit', function (event) {
+        event.preventDefault();
+        Swal.fire({
+            icon: 'success',
+            title: 'Terima Kasih!',
+            text: 'Pesan Anda berhasil dikirim!',
+            timer: 2000,
+            showConfirmButton: false
+        }).then(() => {
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('contact-form').reset();
+    });
+
+    // Handle checkout form
+    document.getElementById('payment-form')?.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+        if (totalPrice > 0) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Checkout Berhasil!',
+                text: `Total yang harus dibayar: $${totalPrice.toFixed(2)}`,
+                confirmButtonText: 'OK'
+            }).then(() => {
+                localStorage.removeItem('cart');
+                updateCart();
+                document.getElementById('payment-form').reset();
+                document.getElementById('empty-cart-message').style.display = 'block';
+                document.getElementById('cart-items').innerHTML = '';
+            });
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Keranjang Kosong!',
+                text: 'Silakan tambahkan produk ke keranjang terlebih dahulu.'
+            });
+        }
+    });
+});
+// Handle product descriptions (optional)
+    const productDescriptions = {
+        1: {
+            name: "Product 1",
+            price: 217,
+            description: "This is the description for Product 1.",
+            image: "gambar/Iphone_8.jpg"
+        },
+        2: {
+            name: "Product 2",
+            price: 20.00,
+            description: "This is the description for Product 2.",
+            image: "product2.jpg"
+        },
+        3: {
+            name: "Product 3",
+            price: 30.00,
+            description: "This is the description for Product 3.",
+            image: "product3.jpg"
+        },
+        4: {
+            name: "Product 4",
+            price: 40.00,
+            description: "This is the description for Product 4.",
+            image: "product4.jpg"
+        },
+        5: {
+            name: "Product 5",
+            price: 50.00,
+            description: "This is the description for Product 5.",
+            image: "product5.jpg"
+        },
+        6: {
+            name: "Product 6",
+            price: 60.00,
+            description: "This is the description for Product 6.",
+            image: "product6.jpg"
+        },
+        7: {
+            name: "Product 7",
+            price: 70.00,
+            description: "This is the description for Product 7.",
+            image: "product7.jpg"
+        }
+    };
+    const productId = new URLSearchParams(window.location.search).get('id');
+    if (productId && productDescriptions[productId]) {
+        const product = productDescriptions[productId];
+        document.getElementById('product-name').textContent = product.name;
+        document.getElementById('product-price').textContent = `$${product.price.toFixed(2)}`;
+        document.getElementById('product-description').textContent = product.description;
+        document.getElementById('product-image').src = product.image;
+    }   
+else {
+        document.getElementById('product-details').innerHTML = '<p>Product not found.</p>';
+    }
+    document.getElementById('add-to-cart-button')?.addEventListener('click', function () {
+        addToCart(product.name, product.price);
+    });
+    document.getElementById('cart-link')?.addEventListener('click', function () {
+        window.location.href = 'cart.html';
+    });
+    document.getElementById('home-link')?.addEventListener('click', function () {
         window.location.href = 'index.html';
     });
-
-    document.getElementById('contact-form').reset();
-});
-
-
+document.getElementById('contact-link')?.addEventListener('click', function () {
+        window.location.href = 'contact.html';
+    });
+document.getElementById('about-link')?.addEventListener('click', function () {
+        window.location.href = 'about.html';
+    }
+);
