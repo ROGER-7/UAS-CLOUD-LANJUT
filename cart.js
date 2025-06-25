@@ -68,10 +68,17 @@ function removeFromCart(index) {
 function checkout() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-    
-    alert(`Checkout sukses! Jumlah total: $${totalPrice.toFixed(2)}`);
-    localStorage.removeItem('cart');
-    updateCart();
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Checkout Sukses!',
+        text: `Jumlah total: $${totalPrice.toFixed(2)}`,
+        timer: 2000,
+        showConfirmButton: false
+    }).then(() => {
+        localStorage.removeItem('cart');
+        updateCart();
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -80,7 +87,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.getElementById('contact-form')?.addEventListener('submit', function(event) {
     event.preventDefault();
-    alert('Thank you for your message!');
+    Swal.fire({
+        icon: 'success',
+        title: 'Terima Kasih!',
+        text: 'Pesan Anda berhasil dikirim!',
+        timer: 2000,
+        showConfirmButton: false
+    }).then(() => {
+        // Redirect to the home page after showing the success message
+        window.location.href = 'index.html';
+    });
+
     document.getElementById('contact-form').reset();
 });
 

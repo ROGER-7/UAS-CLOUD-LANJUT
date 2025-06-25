@@ -71,7 +71,12 @@ function checkout() {
         document.getElementById('cart').style.display = 'none';
         document.getElementById('payment').style.display = 'block';
     } else {
-        alert('Your cart is empty.');
+        Swal.fire({
+            icon: 'warning',
+            title: 'Keranjang Kosong',
+            text: 'Silakan tambahkan item ke keranjang Anda sebelum melakukan checkout.',
+            confirmButtonText: 'OK'
+        });
     }
 }
 
@@ -142,9 +147,20 @@ document.getElementById('payment-form')?.addEventListener('submit', function(eve
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
     
-    alert(`Checkout sukses! Jumlah total: $${totalPrice.toFixed(2)}`);
-    localStorage.removeItem('cart');
-    updateCart();
+    Swal.fire({
+        icon: 'success',
+        title: 'Checkout Sukses!',
+        text: `Jumlah total: $${totalPrice.toFixed(2)}`,
+        timer: 2000,
+        showConfirmButton: false
+    }).then(() => {
+        localStorage.removeItem('cart');
+        updateCart();
+        
+        document.getElementById('payment').style.display = 'none';
+        document.getElementById('cart').style.display = 'block';
+        document.getElementById('empty-cart-message').style.display = 'block';
+    });
     
     document.getElementById('payment').style.display = 'none';
     document.getElementById('cart').style.display = 'block';
