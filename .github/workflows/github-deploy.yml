@@ -22,8 +22,8 @@ jobs:
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_KEY }}
           script: |
+            docker pull roger375/simple-app:01
             docker stop simple-app || true
             docker rm simple-app || true
             docker image prune -a -f
-            docker pull roger375/simple-app:01
             docker run -d -p 8080:80 --name simple-app roger375/simple-app:01
